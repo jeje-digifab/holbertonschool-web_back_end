@@ -1,0 +1,6 @@
+.editorconfig
+*.pyc
+.vscode
+ven
+venv
+node_modules
