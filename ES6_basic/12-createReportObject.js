@@ -9,6 +9,5 @@ export default function createReportObject(employeesList) {
     }
   };
 
-
   return reportObject;
 }
