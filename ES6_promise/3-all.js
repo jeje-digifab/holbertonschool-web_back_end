@@ -5,18 +5,9 @@ import {
 
 export default function handleProfileSignup() {
   Promise.all([uploadPhoto(), createUser()])
-    .then(([photoResponse, userResponse]) => {
-      if (
-        photoResponse && photoResponse.body
-        && userResponse && userResponse.firstName
-        && userResponse.lastName
-      ) {
-        console.log(
-          `${photoResponse.body} ${userResponse.firstName} ${userResponse.lastName}`,
-        );
-      } else {
-        console.log('Signup system offline');
-      }
+    .then((responses) => {
+      const [photoResponse, userResponse] = responses;
+      console.log(`${photoResponse.body} ${userResponse.firstName} ${userResponse.lastName}`);
     })
     .catch(() => {
       console.log('Signup system offline');
