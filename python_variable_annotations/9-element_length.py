@@ -6,10 +6,10 @@ flooring values, and concatenating strings.
 It is designed to be executed with Python 3.
 """
 
-from typing import Tuple, Iterable, Sequence
+from typing import Tuple, Iterable, Sequence, List
 
 
-def element_length(lst: Iterable[Sequence]) -> Iterable[Tuple[Sequence, int]]:
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """
     Returns a list of tuples, where each tuple contains an element from
     the input list and its length.
