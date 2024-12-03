@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 """
-This script performs various operations, such as converting floats to strings,
-flooring values, and concatenating strings.
-
-It is designed to be executed with Python 3.
+This script defines an asynchronous coroutine that waits for a random delay.
 """
 
-
 import random
+import asyncio
 
 
 async def wait_random(max_delay=10):
@@ -20,4 +17,6 @@ async def wait_random(max_delay=10):
     Returns:
         float: The actual delay waited.
     """
-    return random.uniform(0, max_delay)
+    delay = random.uniform(0, max_delay)
+    await asyncio.sleep(delay)
+    return delay
