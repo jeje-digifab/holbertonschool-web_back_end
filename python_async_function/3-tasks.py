@@ -23,5 +23,6 @@ def task_wait_random(max_delay: int) -> Any:
     Returns:
         asyncio.Task: The created asyncio Task.
     """
-    my_task = wait_random(max_delay)
-    return asyncio.create_task(my_task)
+    coroutine = wait_random(max_delay)
+    my_task = asyncio.create_task(coroutine)
+    return my_task
