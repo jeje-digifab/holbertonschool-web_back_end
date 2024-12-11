@@ -12,7 +12,8 @@ async def async_generator() -> AsyncGenerator[float, None]:
     """
     An asynchronous generator that yields random float values between 0 and 10.
 
-    This generator waits for 1 second between each yield and generates a total of 10 values.
+    This generator waits for 1 second between each yield and generates a total
+        of 10 values.
 
     Yields:
         float: A random float value between 0 and 10.
