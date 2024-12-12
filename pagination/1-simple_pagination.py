@@ -4,7 +4,7 @@ This script calculate the start and end indexes for pagination.
 """
 import csv
 import math
-from typing import List, Any, Tuple, Iterator
+from typing import List, Tuple
 
 
 class Server:
@@ -30,30 +30,37 @@ class Server:
         """
         Retrieves a specific page of data from a CSV file.
 
-        This function reads data from a CSV file named 'Popular_Baby_Names.csv' and returns a subset of the data
+        This function reads data from a CSV file named 'Popular_Baby_Names.csv'
+            and returns a subset of the data
         corresponding to the specified page and page size.
 
         Args:
-            page (int): The page number to retrieve. Must be an integer greater than 0. Default is 1.
-            page_size (int): The number of rows per page. Must be an integer greater than 0. Default is 10.
+            page (int): The page number to retrieve.
+            Must be an integergreater than 0. Default is 1.
+
+            page_size (int): The number of rows per page.
+            Must be an integer greater than 0. Default is 10.
 
         Returns:
-            List[List]: A list of rows from the CSV file corresponding to the specified page.
-                        Returns an empty list if the start index is out of the range of the data.
+            List[List]: A list of rows from the CSV file corresponding
+                            to the specified page.
+                        Returns an empty list if the start index is out
+                            of the range of the data.
 
         Raises:
-            AssertionError: If `page` or `page_size` is not an integer greater than 0.
+            AssertionError: If `page` or `page_size` is not an integer
+                greater than 0.
         """
         assert isinstance(
             page, int) and page > 0, "Page must be an integer greater than 0"
-        assert isinstance(
-            page_size, int) and page_size > 0, "Page size must be an integer greater than 0"
 
-        with open('Popular_Baby_Names.csv', 'r') as csvfile:
-            reader: Iterator[List[str]] = csv.reader(csvfile)
-            data: List[List[Any]] = [row for row in reader]
+        assert (
+            isinstance(page_size, int) and page_size > 0
+        ), "Page size must be an integer greater than 0"
 
-            start_index, end_index = index_range(page, page_size)
+        data = self.dataset()
+
+        start_index, end_index = index_range(page, page_size)
 
         if start_index >= len(data):
             return []
