@@ -15,16 +15,6 @@ The script performs the following tasks:
 Usage:
 Run the script from the command line to see the statistics printed
 to the console.
-
-Example output:
-0 logs
-Methods:
-    method GET: 0
-    method POST: 0
-    method PUT: 0
-    method PATCH: 0
-    method DELETE: 0
-0 status check
 """
 
 from pymongo import MongoClient
@@ -50,8 +40,8 @@ if __name__ == "__main__":
 
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     for method in methods:
-        print("    method {}: {}".format(
-            method, collection.count_documents({"method": method})))
+        count = collection.count_documents({"method": method})
+        print("    method {}: {}".format(method, count))
 
     status_check_count = collection.count_documents(
         {"method": "GET", "path": "/status"})
