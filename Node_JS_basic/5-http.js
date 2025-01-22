@@ -4,7 +4,9 @@ const countStudents = require('./3-read_file_async');
 
 const app = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
-  const { pathname } = parsedUrl;
+  const {
+    pathname,
+  } = parsedUrl;
 
   if (pathname === '/') {
     res.writeHead(200, {
@@ -14,7 +16,7 @@ const app = http.createServer((req, res) => {
   } else if (pathname === '/students') {
     if (process.argv.length > 2) {
       const csvFile = process.argv[2];
-      const output = 'This is the list of our students\n';
+      const output = 'This is the list of our students';
 
       const originalLog = console.log;
       let capturedOutput = '';
