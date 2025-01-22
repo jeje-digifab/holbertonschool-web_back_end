@@ -16,7 +16,7 @@ const app = http.createServer((req, res) => {
   } else if (pathname === '/students') {
     if (process.argv.length > 2) {
       const csvFile = process.argv[2];
-      const output = 'This is the list of our students';
+      const output = 'This is the list of our students\n';
 
       const originalLog = console.log;
       let capturedOutput = '';
